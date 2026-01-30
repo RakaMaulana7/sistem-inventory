@@ -223,27 +223,7 @@ Kontribusi sangat diterima! Silakan ikuti langkah berikut:
 4. Push ke branch (`git push origin feature/AmazingFeature`)
 5. Buat Pull Request
 
-## 👨‍💻 Developer
-
-Dikembangkan oleh Tim Pengembang Fakultas Teknik UMSurabaya
-
-## 📞 Kontak & Support
-
-- **Email**: teknik@ums.ac.id
-- **Website**: [Fakultas Teknik UMSurabaya](https://ft.ums.ac.id)
-- **Instagram**: [@ft_umsurabaya](https://instagram.com/ft_umsurabaya)
-
-## 🙏 Acknowledgments
-
-- Universitas Muhammadiyah Surabaya
-- Fakultas Teknik UMSurabaya
-- Kampus Merdeka
-- Tim Pengembang dan Kontributor
-
----
 
 <div align="center">
-  Made with ❤️ by Fakultas Teknik UMSurabaya
-  
-  ⭐ Star repository ini jika bermanfaat!
+  Made with Raka Maulana Bintang
 </div>
