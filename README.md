@@ -158,16 +158,6 @@ ft/
    http://localhost/sistem-inventori-ft/
    ```
 
-## 👥 Default Login
-
-### Admin
-- **Email**: admin@ums.ac.id
-- **Password**: admin123
-
-### User
-- **Email**: user@ums.ac.id
-- **Password**: user123
-
 > ⚠️ **Penting**: Segera ganti password default setelah login pertama kali!
 
 ## 📸 Screenshots
