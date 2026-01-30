@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="assets/kampusums.png" />
+    <title>Login Inventory - Fakultas Teknik</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+    .page-transition {
+        animation: pageFadeOut 0.6s ease forwards;
+    }
+    @keyframes pageFadeOut {
+        from { opacity: 1; transform: translateY(0); }
+        to { opacity: 0; transform: translateY(12px); }
+    }
+    </style>
+    <script>
+    tailwind.config = {
+        theme: {
+        extend: {
+            colors: {
+                brand: '#10b981',
+                brandHover: '#059669',
+                brandSecondary: '#3b82f6',
+                brandSecondaryHover: '#2563eb',
+            },
+            keyframes: {
+            fadeInUp: {
+                '0%': { opacity: 0, transform: 'translateY(20px)' },
+                '100%': { opacity: 1, transform: 'translateY(0)' },
+            }
+            },
+            animation: {
+            fadeInUp: 'fadeInUp 0.7s ease-out forwards'
+            }
+        }
+        }
+    }
+    </script>
+</head>
+<body class="min-h-screen w-full flex bg-white font-sans overflow-hidden">
+
+<div class="hidden lg:flex lg:w-1/2 xl:w-7/12 relative bg-gray-900 text-white flex-col justify-between p-16 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <img src="assets/111.jpeg" class="w-full h-full object-cover opacity-50 transition-transform duration-[20s] hover:scale-110">
+        <div class="absolute inset-0 bg-gradient-to-tr from-emerald-900 via-green-600/80 to-blue-600/60"></div>
+    </div>
+
+    <div class="relative z-10 flex gap-4">
+        <div class="bg-white/10 backdrop-blur-md p-2 rounded-lg border border-white/20">
+            <img src="assets/umsura.png" class="h-8">
+        </div>
+        <div class="bg-white/10 backdrop-blur-md p-2 rounded-lg border border-white/20">
+            <img src="assets/kampus.webp" class="h-8">
+        </div>
+    </div>
+
+    <div class="relative z-10 max-w-xl">
+        <h2 class="text-6xl font-extrabold mb-6 tracking-tight leading-tight">
+            Permuda <br> Asset <span class="text-green-200 underline decoration-green-500/50">Kamu</span>
+        </h2>
+        <p class="text-gray-200 text-lg opacity-90">
+            Sistem manajemen inventaris Fakultas Teknik UMSurabaya. Pantau dan kelola aset laboratorium dengan efisien.
+        </p>
+    </div>
+
+    <div class="relative z-10 text-xs text-gray-400 uppercase tracking-widest">
+        © 2025 Fakultas Teknik UMSurabaya
+    </div>
+</div>
+
+<div class="w-full lg:w-1/2 xl:w-5/12 flex flex-col justify-center items-center p-6 sm:p-12 relative bg-white animate-fadeInUp">
+    <div class="absolute top-6 left-6 sm:top-10 sm:left-10 z-20">
+    <a href="index.html" class="group flex items-center gap-2 text-sm font-semibold text-gray-500 hover:text-brand transition-all duration-300">
+    <div class="p-2 rounded-full bg-gray-50 group-hover:bg-green-50 transition-colors">
+        <i data-lucide="arrow-left"
+           class="w-[18px] h-[18px] group-hover:-translate-x-1 transition-transform duration-300"></i>
+    </div>
+    <span class="text-sm font-medium">Kembali ke Beranda</span>
+    </a>
+    </div>
+
+    <div class="w-full max-w-md space-y-10 relative">
+        <div class="space-y-2 text-center lg:text-left">
+            <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight">Selamat Datang</h1>
+            <p class="text-gray-500">Silakan masukkan akun Anda untuk melanjutkan.</p>
+        </div>
+
+        <div id="errorAlert" class="hidden items-center gap-3 bg-red-50 border border-red-100 text-red-700 p-4 rounded-2xl text-sm animate-bounce">
+            <i data-lucide="alert-circle" class="w-5 h-5"></i>
+            <p id="errorMessage" class="font-medium"></p>
+        </div>
+
+        <form id="loginForm" class="space-y-6">
+            <div class="space-y-2">
+                <label class="text-xs font-bold text-gray-600 uppercase ml-1">Username</label>
+                <div class="relative">
+                    <i data-lucide="user" class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5"></i>
+                    <input type="text" name="username" id="usernameInput" required
+                        class="w-full pl-12 pr-4 py-4 rounded-2xl bg-gray-50 border border-gray-100 focus:bg-white focus:ring-2 focus:ring-brand/20 focus:border-brand outline-none transition-all"
+                        placeholder="ID Pengguna">
+                </div>
+            </div>
+
+            <div class="space-y-2">
+                <label class="text-xs font-bold text-gray-600 uppercase ml-1">Password</label>
+                <div class="relative">
+                    <i data-lucide="lock" class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5"></i>
+                    <input type="password" name="password" id="passwordInput" required
+                        class="w-full pl-12 pr-12 py-4 rounded-2xl bg-gray-50 border border-gray-100 focus:bg-white focus:ring-2 focus:ring-brand/20 focus:border-brand outline-none transition-all"
+                        placeholder="••••••••">
+                    <button type="button" onclick="togglePassword()" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+                        <i data-lucide="eye" id="eyeIcon" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between px-1">
+                <a href="forgot-password.html" class="text-sm font-semibold text-brand hover:underline transition-all duration-300">
+                    Lupa Password?
+                </a>
+            </div>
+
+            <button type="submit" id="submitBtn"
+                class="w-full py-4 rounded-2xl text-white font-bold text-lg shadow-lg hover:shadow-green-200
+                bg-gradient-to-r from-brand to-brandSecondary hover:scale-[1.02] active:scale-[0.98] transition-all flex justify-center items-center gap-2">
+                <span id="btnText">Masuk Dashboard</span>
+                <i data-lucide="arrow-right" id="btnIcon" class="w-5 h-5"></i>
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>
+    lucide.createIcons();
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const status = urlParams.get('status');
+        const errorAlert = document.getElementById('errorAlert');
+        const errorMessage = document.getElementById('errorMessage');
+
+        if (status === 'session_expired') {
+            errorAlert.classList.remove('hidden');
+            errorAlert.classList.add('flex'); 
+            errorMessage.innerText = "Akun Anda baru saja login di perangkat lain. Sesi ini telah berakhir demi keamanan.";
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+    });
+    
+    function togglePassword() {
+        const input = document.getElementById('passwordInput');
+        const icon = document.getElementById('eyeIcon');
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.setAttribute('data-lucide', 'eye-off');
+        } else {
+            input.type = 'password';
+            icon.setAttribute('data-lucide', 'eye');
+        }
+        lucide.createIcons();
+    }
+
+    const loginForm = document.getElementById('loginForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const errorAlert = document.getElementById('errorAlert');
+
+    loginForm.onsubmit = async (e) => {
+        e.preventDefault();
+        submitBtn.disabled = true;
+        document.getElementById('btnText').innerText = "Memverifikasi...";
+        errorAlert.classList.add('hidden');
+
+        const formData = new FormData(loginForm);
+        const dataPayload = new URLSearchParams();
+        for (const pair of formData) {
+            dataPayload.append(pair[0], pair[1]);
+        }
+
+        try {
+            const response = await fetch('auth/login_process.php', {
+                method: 'POST',
+                body: dataPayload,
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            });
+
+            const responseText = await response.text();
+            
+            try {
+                const result = JSON.parse(responseText);
+                if (result.success) {
+                    window.location.href = result.redirect;
+                } else {
+                    errorAlert.classList.remove('hidden');
+                    document.getElementById('errorMessage').innerText = result.message;
+                    resetButton();
+                }
+            } catch (jsonErr) {
+                console.error("Format JSON Salah:", responseText);
+                errorAlert.classList.remove('hidden');
+                document.getElementById('errorMessage').innerText = "Server mengirim format data yang salah.";
+                resetButton();
+            }
+        } catch (err) {
+            console.error("Koneksi Error:", err);
+            errorAlert.classList.remove('hidden');
+            document.getElementById('errorMessage').innerText = "Tidak dapat terhubung ke server.";
+            resetButton();
+        }
+    };
+
+    function resetButton() {
+        submitBtn.disabled = false;
+        document.getElementById('btnText').innerText = "Masuk Dashboard";
+    }
+</script>
+</body>
+</html>

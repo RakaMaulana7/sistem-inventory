@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="assets/kampusums.png" />
+    <title>Log in to the site</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+    function smoothRedirect(event, url) {
+        event.preventDefault();
+        document.body.classList.add('page-transition');
+
+        setTimeout(() => {
+        window.location.href = url;
+        }, 600);
+    }
+
+    function smoothScroll(event, targetId) {
+        event.preventDefault();
+        const target = document.getElementById(targetId);
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+    </script>
+
+    <style>
+    .page-transition {
+        animation: pageFadeOut 0.6s ease forwards;
+    }
+
+    @keyframes pageFadeOut {
+        from {
+        opacity: 1;
+        transform: translateY(0);
+        }
+        to {
+        opacity: 0;
+        transform: translateY(-10px);
+        }
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#10b981',
+                        brandHover: '#059669',
+                        brandSecondary: '#3b82f6',
+                        brandSecondaryHover: '#2563eb',
+                    },
+                    keyframes: {
+                        'slide-up': {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        'fade-in': {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        }
+                    },
+                    animation: {
+                        'slide-up': 'slide-up 0.6s ease-out forwards',
+                        'fade-in': 'fade-in 0.8s ease-out forwards',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen bg-white font-sans text-gray-800 overflow-x-hidden">
+
+    <nav class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-100 z-50 transition-all animate-fade-in">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 md:h-20">
+                <div class="flex items-center gap-2 md:gap-3">
+                    <img src="assets/umsura.png" alt="Logo FT" class="h-8 md:h-10 w-auto hover:scale-105 transition-transform duration-300" />
+                    <div class="hidden sm:block w-px h-6 md:h-8 bg-gray-300 mx-1"></div>
+                    <img src="assets/kampus.webp" alt="Logo Kampus" class="h-8 md:h-10 w-auto hover:scale-105 transition-transform duration-300" />
+                </div>
+
+                <div class="flex items-center gap-6">
+                    <a href="login.html" onclick="smoothRedirect(event, 'login.html')" class="px-4 py-2 md:px-6 md:py-2.5 rounded-full bg-gradient-to-r from-brand to-brandSecondary text-white text-xs md:text-sm font-medium hover:from-brandHover hover:to-brandSecondaryHover transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 flex items-center gap-2">
+                        Log In
+                        <i data-lucide="arrow-right" class="hidden sm:block w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main id="home" class="grow pt-24 pb-12 md:pt-32 md:pb-16 px-4 sm:px-6 lg:px-8 flex items-center">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            <div class="space-y-6 md:space-y-8 animate-slide-up flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1">
+                
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-green-50 text-brand text-xs md:text-sm font-semibold border border-green-100 hover:bg-green-100 transition-colors cursor-default">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-brand"></span>
+                    </span>
+                    Sistem Informasi Inventori
+                </div>
+
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
+                    Kelola Aset Fakultas Teknik <br class="hidden md:block"/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand to-brandSecondary">
+                        Lebih Efisien
+                    </span>
+                </h1>
+
+                <p class="text-base md:text-lg text-gray-600 leading-relaxed max-w-lg delay-100 animate-slide-up opacity-0 [animation-fill-mode:forwards] mx-auto lg:mx-0">
+                    Platform manajemen inventaris resmi Fakultas Teknik UMSurabaya. 
+                    Pantau stok, peminjaman alat, dan pelaporan aset dalam satu dashboard yang modern.
+                </p>
+
+                <div class="flex flex-col sm:flex-row w-full sm:w-auto gap-4 delay-200 animate-slide-up opacity-0 [animation-fill-mode:forwards]">
+                    <a href="login.html"
+                    onclick="smoothRedirect(event, 'login.html')"
+                    class="w-full sm:w-auto px-8 py-3 md:py-4 rounded-xl bg-gradient-to-r from-brand to-brandSecondary text-white font-bold text-base md:text-lg shadow-xl hover:from-brandHover hover:to-brandSecondaryHover transition-all">
+                    Mulai Sekarang
+                    </a>
+                    <a href="panduan.php" onclick="smoothRedirect(event, 'panduan.php')" class="w-full sm:w-auto px-8 py-3 md:py-4 rounded-xl bg-white border-2 border-brand text-gray-700 font-semibold hover:bg-green-50 transition-colors text-center hover:border-brandHover flex justify-center items-center">
+                        Pelajari Panduan
+                    </a>
+                </div>
+
+                <div class="pt-2 md:pt-6 flex flex-wrap justify-center lg:justify-start gap-4 md:gap-6 text-sm text-gray-500 font-medium delay-300 animate-slide-up opacity-0 [animation-fill-mode:forwards]">
+                    <div class="flex items-center gap-2 hover:text-brand transition-colors">
+                        <i data-lucide="check-circle" class="text-brand w-5 h-5"></i> Real-time Data
+                    </div>
+                    <div class="flex items-center gap-2 hover:text-brandSecondary transition-colors">
+                        <i data-lucide="check-circle" class="text-brandSecondary w-5 h-5"></i> Akses Aman
+                    </div>
+                    <div class="flex items-center gap-2 hover:text-brand transition-colors">
+                        <i data-lucide="check-circle" class="text-brand w-5 h-5"></i> Laporan Otomatis
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative hidden md:block lg:block animate-fade-in delay-200 order-1 lg:order-2 mb-10 lg:mb-0">
+                <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-green-100 rounded-full blur-3xl opacity-50 animate-pulse"></div>
+                
+                <div class="relative grid grid-cols-2 gap-4 max-w-md mx-auto lg:max-w-none">
+                    <div class="bg-white p-4 md:p-6 rounded-2xl shadow-xl border border-gray-100 transform lg:translate-y-12 animate-slide-up delay-200 opacity-0 [animation-fill-mode:forwards] hover:scale-105 transition-transform duration-300 z-10">
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-blue-50 rounded-lg flex items-center justify-center text-brandSecondary mb-3 md:mb-4">
+                            <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900 mb-1 text-sm md:text-base">Analitik Data</h3>
+                        <p class="text-xs md:text-sm text-gray-500">Monitoring penggunaan alat lab secara statistik.</p>
+                    </div>
+                    
+                    <div class="bg-white p-4 md:p-6 rounded-2xl shadow-xl border border-gray-100 animate-slide-up delay-300 opacity-0 [animation-fill-mode:forwards] hover:scale-105 transition-transform duration-300 z-10">
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-green-50 rounded-lg flex items-center justify-center text-brand mb-3 md:mb-4">
+                            <i data-lucide="box" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900 mb-1 text-sm md:text-base">Stok Barang</h3>
+                        <p class="text-xs md:text-sm text-gray-500">Pencatatan barang masuk dan keluar akurat.</p>
+                    </div>
+
+                    <div class="bg-white p-4 md:p-6 rounded-2xl shadow-xl border border-gray-100 col-span-2 transform lg:-translate-y-4 lg:mx-12 animate-slide-up delay-400 opacity-0 [animation-fill-mode:forwards] hover:scale-105 transition-transform duration-300 z-10 mt-4 lg:mt-0">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 md:w-12 md:h-12 bg-green-50 rounded-lg flex items-center justify-center text-brand shrink-0">
+                                <i data-lucide="shield-check" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900 text-sm md:text-base">Keamanan Terjamin</h3>
+                                <p class="text-xs md:text-sm text-gray-500">Login terenkripsi untuk Admin & User.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <br><br><br>
+    <footer class="bg-[#1a1a1a] text-gray-300 py-16 border-t-4 border-brand font-sans">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 px-6 lg:px-8">
+        
+        <div class="space-y-4">
+            <div class="flex items-center space-x-3 mb-4 bg-white/5 w-fit p-3 rounded-xl border border-white/10 backdrop-blur-sm">
+                <img src="assets/umsura.png" alt="UMS" class="h-8 sm:h-9 md:h-10 w-auto object-contain" />
+                <img src="assets/kampus.webp" alt="Kampus Merdeka" class="h-8 sm:h-9 md:h-10 w-auto object-contain" />
+            </div>
+            <p class="text-sm leading-relaxed text-gray-400">
+                <span class="text-white font-semibold">Sistem Informasi Inventori Berbasis Online</span>
+                <br />
+                Fakultas Teknik Universitas Muhammadiyah Surabaya
+            </p>
+        </div>
+
+        <div>
+            <h3 class="text-sm font-bold text-white uppercase tracking-widest mb-6 border-b-2 border-brand w-fit pb-1">
+                Info Terkait
+            </h3>
+            <ul class="space-y-3 text-sm">
+                <li>
+                    <a href="https://www.um-surabaya.ac.id/" class="flex items-center gap-2 hover:text-brand hover:translate-x-1 transition-all duration-300">
+                        <i data-lucide="globe" class="w-4 h-4 text-brand"></i>
+                        Universitas Muhammadiyah Surabaya
+                    </a>
+                </li>
+                <li>
+                    <a href="https://cybercampus.um-surabaya.ac.id/login" class="flex items-center gap-2 hover:text-brandSecondary hover:translate-x-1 transition-all duration-300">
+                        <i data-lucide="shield-check" class="w-4 h-4 text-brandSecondary"></i>
+                        Cybercampus
+                    </a>
+                </li>
+                <li>
+                    <a href="https://baa.um-surabaya.ac.id/" class="flex items-center gap-2 hover:text-brand hover:translate-x-1 transition-all duration-300">
+                        <i data-lucide="external-link" class="w-4 h-4 text-brand"></i>
+                        Biro Administrasi Akademik
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div>
+            <h3 class="text-sm font-bold text-white uppercase tracking-widest mb-6 border-b-2 border-brandSecondary w-fit pb-1">
+                Contact Us
+            </h3>
+            <div class="space-y-4 text-sm text-gray-400">
+                <div class="flex items-start gap-3">
+                    <i data-lucide="map-pin" class="text-brand w-5 h-5 mt-1 shrink-0"></i>
+                    <p>
+                        <strong class="text-white">Universitas Muhammadiyah Surabaya</strong> <br />
+                        Jalan Sutorejo No 59, Surabaya, Jawa Timur, Indonesia 60113
+                    </p>
+                </div>
+                
+                <p class="flex items-center gap-3">
+                    <i data-lucide="phone" class="text-brandSecondary w-5 h-5"></i>
+                    <a href="https://wa.me/6281130877100" class="hover:text-white transition-colors border-b border-transparent hover:border-white">
+                        0811-3087-7100 (WA ONLY)
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center text-gray-500 mt-12 border-t border-white/10 pt-8 px-6">
+        <p class="text-xs sm:text-sm leading-relaxed flex flex-col sm:flex-row justify-center items-center gap-2">
+            <span>
+                Copyright © 2025 —
+                <a href="https://um-surabaya.ac.id" target="_blank" rel="noreferrer" class="text-white hover:text-brand font-medium transition-colors duration-200 ml-1">
+                    Universitas Muhammadiyah Surabaya
+                </a>
+            </span>
+            <span class="hidden sm:inline text-gray-700">|</span>
+            <span>
+                Powered by 
+                <a href="https://www.instagram.com/himatifa_umsurabaya?igsh=dXR1NjEzNjlycGZo" class="text-white hover:text-brandSecondary font-medium transition-colors duration-200">
+                    Informatika2023
+                </a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+    lucide.createIcons();
+</script>
+</body>
+</html>
