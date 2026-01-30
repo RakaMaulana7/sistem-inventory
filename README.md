@@ -173,13 +173,13 @@ ft/
 ## 📸 Screenshots
 
 ### Landing Page
-![Landing Page](screenshot/landing.png)
+![Landing Page](assets/index.png)
 
 ### Dashboard Admin
-![Admin Dashboard](screenshot/admin-dashboard.png)
+![Admin Dashboard](assets/admin.png)
 
 ### Dashboard User
-![User Dashboard](screenshot/user-dashboard.png)
+![User Dashboard](assets/user.png)
 
 ## 🔧 Konfigurasi Tambahan
 
@@ -222,10 +222,6 @@ Kontribusi sangat diterima! Silakan ikuti langkah berikut:
 3. Commit perubahan (`git commit -m 'Add some AmazingFeature'`)
 4. Push ke branch (`git push origin feature/AmazingFeature`)
 5. Buat Pull Request
-
-## 📄 Lisensi
-
-Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 👨‍💻 Developer
 
